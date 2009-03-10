@@ -1,0 +1,41 @@
+<% stylesheets 'tweets' %>
+<% # javascripts 'my-tsapp' %>
+<% tweets = @page_object.tweets %>
+
+<% if @page_object.tweetless? %>
+<div class="tweetless">
+<% end %>
+
+<div class="profile-head">
+<a href="http://twitter.com/<%=h tweets.first['user']['screen_name'] %>">
+  <img id="profile-image" width="73" height="73" border="0" valign="middle" src="<%= tweets.first['user']['profile_image_url'] %>" alt="<%=h tweets.first['user']['name'] %>"/>
+  <%=h tweets.first['user']['screen_name'] %> / <%=h tweets.first['user']['followers_count'] %> followers
+</a>
+</div>
+<ol id="timeline" class="statuses">
+  <% for tweet in tweets %>
+    <% created_at_string = Time.create(tweet['created_at']).strftime("%I:%M %p %b %d") %>
+
+  <li id="status_<%=h tweet['id'] %>" class="status<%= ' latest-status' if tweet == tweets.first %>">
+    <span class="status-body">
+      <span class="entry-content">
+    
+        <% tweet_html = h(tweet['text']) %>
+        <% tweet_html = tweet_html.gsub!(tweet['in_reply_to_screen_name'], "<a href=\"http://twitter.com/#{tweet['in_reply_to_screen_name']}\">#{tweet['in_reply_to_screen_name']}</a>") unless tweet['in_reply_to_screen_name'].blank? %>
+      
+        <%= tweet_html %>
+      </span>
+      <span class="meta entry-meta">
+        <a class="entry-date" rel="bookmark" href="http://twitter.com/<%=h tweet['user']['screen_name'] %>/status/<%=h tweet['id'] %>">
+          <span class="published"><%=h created_at_string %><%=h created_at_string[-1] == (1 ? 'st' : (2 ? 'nd' : (3 ? 'rd' : 'th')))  %></span>
+        </a>
+        <span>from <%= tweet['source'] %></span>
+      </span>
+    </span>
+  </li>
+  <% end %>
+</ol>
+
+<% if @page_object.tweetless? %>
+</div>
+<% end %>

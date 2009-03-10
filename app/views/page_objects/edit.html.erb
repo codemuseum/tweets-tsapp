@@ -1,0 +1,12 @@
+<% # stylesheets 'my-tsapp', 'my-tsapp-edit' %>
+<% # javascripts 'my-tsapp-edit' %>
+
+<% fields_for_page_object do |f| %>
+  <p>
+    <%= f.label :username, "Twitter Username" %>: <%= f.text_field :username %><br/>
+    e.g. http://twitter.com/<em>username</em>
+  </p>
+  <p>
+    <%= f.label :number_of_updates %>: <%= f.select :number_of_updates, 0...100 %>
+  </p>
+<% end %>

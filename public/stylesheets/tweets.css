@@ -1,0 +1,11 @@
+body.displaying-page.action-edit .app-tweets div.tweetless { height:32px; background:transparent url(/tweets/images/no-tweets.png) top center no-repeat; border:1px dotted gray;}
+
+.app-tweets a {text-decoration:none;}
+.app-tweets a:hover {text-decoration:underline;}
+.app-tweets .profile-head {font-size:2.8em;}
+.app-tweets .latest-status {font-size:1.77em;}
+.app-tweets ol.statuses {list-style:none;}
+.app-tweets ol.statuses span.meta { color:#999999; display:block; font-family:georgia; font-size:0.8em; font-style:italic; }
+.app-tweets ol.statuses span.meta a { color:#999999; }
+.app-tweets ol.statuses li { border-bottom:1px dashed #D2DADA; line-height:1.1em; padding:0.7em 0 0.6em;}
+.app-tweets ol.statuses span.status-body { display:block; }
