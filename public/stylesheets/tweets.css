@@ -1,4 +1,4 @@
-body.displaying-page.action-edit .app-tweets div.tweetless { height:32px; background:transparent url(/tweets/images/no-tweets.png) top center no-repeat; border:1px dotted gray;}
+body.displaying-page.action-edit .app-tweets div.tweetless { height:32px; background:transparent url(../images/no-tweets.png) top center no-repeat; border:1px dotted gray;}
 
 .app-tweets a {text-decoration:none;}
 .app-tweets a:hover {text-decoration:underline;}
