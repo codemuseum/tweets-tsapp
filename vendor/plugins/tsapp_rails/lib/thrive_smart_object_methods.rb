@@ -132,24 +132,11 @@ module ThriveSmartObjectMethods
   
     def to_json(options = {})
       tsom_original_to_json({:methods => [:html, :alml, :caching, :caching_scope, :javascripts, :stylesheets, :errors]}.merge(options))
-      #  do |xml|
-      #   # unless errors.nil? || errors.size == 0
-      #   #   xml.errors do errors.full_messages.each { |msg| xml.error msg } end
-      #   # end
-      #   # unless javascripts.nil? || javascripts.size == 0
-      #   #   # FIXME - this is a stop-gap measure for the period where rails can't handle simple arrays of strings
-      #   #   xml.javascripts :type => :array do javascripts.each { |src| xml.string do xml.string src end } end
-      #   # end
-      #   # unless stylesheets.nil? || stylesheets.size == 0
-      #   #   # FIXME - this is a stop-gap measure for the period where rails can't handle simple arrays of strings
-      #   #   xml.stylesheets :type => :array do stylesheets.each { |src| xml.string do xml.string src end } end
-      #   # end
-      # end
     end
   end
 
   class Data < ActiveResource::Base
-    self.site = ThriveSmart::Constants.ts_platform_host
+    self.site = "#{ThriveSmart::Constants.ts_platform_host}/site"
     self.collection_name = 'data' # FIXME when rails knows that 2 pieces of data is still "data" and not "datas"
     self.format = :tson
 
